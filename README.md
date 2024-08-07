@@ -1,7 +1,5 @@
-# expressjs-typescript-boilerplate
-
-this is a boilerplate to get a expressjs backend following clear architecture using typescript
-
+# Image Gallery Api
+this is a gallery project made with expressjs and typescript
 To create a project, simply run:
 
 steps to run the project
