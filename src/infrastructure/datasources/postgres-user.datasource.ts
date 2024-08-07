@@ -1,12 +1,10 @@
-import { PrismaClient } from "@prisma/client";
 import {
   RegisterUserDto,
   UpdateUserDto,
   User,
   UserDatasource,
 } from "../../domain";
-
-const prisma = new PrismaClient();
+import prisma from "../db.instance";
 
 export class PostgresUserDatasource implements UserDatasource {
   async getUsers(): Promise<User[]> {
