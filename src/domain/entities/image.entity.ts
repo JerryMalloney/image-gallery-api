@@ -7,12 +7,13 @@ export class Image {
     public name: string,
     public alt: string,
     public url: string,
-    public fileType: string,
-    public size: number
+    public format: string,
+    public size: number,
+    public location: string
   ) {}
 
   fromObject(object: { [key: string]: any }): Image {
-    const { id, externalId, name, alt, url, fileType, size } = object;
+    const { id, externalId, name, alt, url, format, size, location } = object;
 
     if (!id) {
       throw CustomError.badRequest("Missing id");
@@ -29,13 +30,13 @@ export class Image {
     if (!url) {
       throw CustomError.badRequest("Missing url");
     }
-    if (!fileType) {
-      throw CustomError.badRequest("Missing fileType");
+    if (!format) {
+      throw CustomError.badRequest("Missing format");
     }
     if (!size) {
       throw CustomError.badRequest("Missing size");
     }
 
-    return new Image(id, externalId, name, alt, url, fileType, size);
+    return new Image(id, externalId, name, alt, url, format, size, location);
   }
 }
