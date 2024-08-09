@@ -4,7 +4,7 @@ import { ErrorHandler } from "../shared/errorHandler";
 import { AuthService } from "./auth.service";
 
 export class AuthController {
-  private errorSource = "authService";
+  private errorSource = "authController";
   constructor(public readonly authService: AuthService) {}
 
   loginUser = (req: Request, res: Response) => {

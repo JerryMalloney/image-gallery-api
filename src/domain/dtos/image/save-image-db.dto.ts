@@ -9,7 +9,7 @@ export class SaveImageDbDto {
     public location: string
   ) {}
 
-  create(object: { [key: string]: any }): [string?, SaveImageDbDto?] {
+  static create(object: { [key: string]: any }): [string?, SaveImageDbDto?] {
     const { externalId, name, alt, url, format, size, location } = object;
     if (!externalId) return ["missing externalId"];
     if (!name) return ["missing name"];
