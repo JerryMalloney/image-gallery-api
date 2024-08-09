@@ -37,7 +37,6 @@ export class CloudinaryImageDatasource implements ImageDatasource {
         .end(imagedto.buffer);
     });
     const data = result as cloudinary.UploadApiResponse;
-    console.log(data);
     const [error, dto] = SavedImageStorageDto.create({
       externalId: data.public_id,
       name: data.original_filename,

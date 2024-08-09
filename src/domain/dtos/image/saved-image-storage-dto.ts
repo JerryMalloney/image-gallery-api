@@ -12,7 +12,6 @@ export class SavedImageStorageDto {
     [key: string]: any;
   }): [string?, SavedImageStorageDto?] {
     const { externalId, name, url, format, size, location } = object;
-    console.log(object);
 
     if (!externalId) {
       return ["missing externalId"];
