@@ -2,6 +2,7 @@ import { Router } from "express";
 import multer from "multer";
 import { CloudinaryImageDatasource } from "../../infrastructure/datasources/cloudinary-images.datasource";
 import { CloudinaryImageRepositoryImpl } from "../../infrastructure/repositories/cloudinary-images.repository";
+import { FileUploadMiddleware } from "../middlewares/fileUploadFilter.middleware";
 import { ImageController } from "./image.controller";
 import { ImageService } from "./image.service";
 
@@ -25,6 +26,7 @@ export class ImageRoute {
     router.get(
       "/",
       upload.array("image"),
+      new FileUploadMiddleware([".jpg", ".jpeg", ".png"]).hasExtensions,
       new ImageController(imageService).saveImage
     );
 
