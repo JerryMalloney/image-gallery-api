@@ -23,7 +23,7 @@ export class ImageRoute {
   static get routes(): Router {
     const router = Router();
 
-    router.get(
+    router.post(
       "/",
       upload.array("image", 1),
       new FileUploadMiddleware([".jpg", ".jpeg", ".png"]).hasExtensions,
@@ -33,3 +33,33 @@ export class ImageRoute {
     return router;
   }
 }
+
+/**
+ * @swagger
+ * tags:
+ *   name: Image
+ */
+
+/**
+ * @swagger
+ * /api/image/:
+ *   post:
+ *     summary: Upload a image
+ *     tags: [Image]
+ *     requestBody:
+ *      content:
+ *        multipart/form-data:
+ *         schema:
+ *          type: object
+ *          properties:
+ *           image:
+ *             type: string
+ *             format: binary
+ *     responses:
+ *       "200":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
