@@ -25,7 +25,7 @@ export class ImageRoute {
 
     router.get(
       "/",
-      upload.array("image"),
+      upload.array("image", 1),
       new FileUploadMiddleware([".jpg", ".jpeg", ".png"]).hasExtensions,
       new ImageController(imageService).saveImage
     );
