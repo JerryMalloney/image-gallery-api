@@ -44,7 +44,7 @@ export class ImageRoute {
  * @swagger
  * /api/image/:
  *   post:
- *     summary: Upload a image
+ *     summary: Upload a image .jpg .jpeg .png
  *     tags: [Image]
  *     requestBody:
  *      content:
