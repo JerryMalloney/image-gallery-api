@@ -1,6 +1,6 @@
 import { envs } from "../../config/envs";
 import { CustomError } from "../../domain";
-import { ImageDatasource } from "../../domain/datasources/image.datasource";
+import { ImageStorageDatasource } from "../../domain/datasources/imageStorage.datasource";
 import { SaveImageStorageDto } from "../../domain/dtos/image/save-image-storage-dto";
 import { SavedImageStorageDto } from "../../domain/dtos/image/saved-image-storage-dto";
 import { Image } from "../../domain/entities/image.entity";
@@ -14,7 +14,7 @@ cloudinary.v2.config({
   secure: true,
 });
 
-export class CloudinaryImageDatasource implements ImageDatasource {
+export class CloudinaryImageDatasource implements ImageStorageDatasource {
   getImages(): Promise<Image[]> {
     throw new Error("Method not implemented.");
   }

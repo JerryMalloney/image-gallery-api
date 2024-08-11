@@ -12,7 +12,7 @@ export class Image {
     public location: string
   ) {}
 
-  fromObject(object: { [key: string]: any }): Image {
+  static fromObject(object: { [key: string]: any }): Image {
     const { id, externalId, name, alt, url, format, size, location } = object;
 
     if (!id) {

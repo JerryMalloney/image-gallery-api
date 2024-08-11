@@ -10,14 +10,13 @@ export class SaveImageDbDto {
   ) {}
 
   static create(object: { [key: string]: any }): [string?, SaveImageDbDto?] {
-    const { externalId, name, alt, url, format, size, location } = object;
+    const { externalId, name, alt, url, format, size, location = "" } = object;
     if (!externalId) return ["missing externalId"];
     if (!name) return ["missing name"];
     if (!alt) return ["missing alt"];
     if (!url) return ["missing url"];
     if (!format) return ["missing format"];
     if (!size) return ["missing size"];
-    if (!location) return ["missing location"];
 
     return [
       undefined,

@@ -1,10 +1,12 @@
-import { SaveImageStorageDto } from "../../domain/dtos/image/save-image-storage-dto";
-import { SavedImageStorageDto } from "../../domain/dtos/image/saved-image-storage-dto";
-import { Image } from "../../domain/entities/image.entity";
-import { ImageRepository } from "../../domain/repositories/image.repository";
+import {
+  Image,
+  ImageStorageRepository,
+  SavedImageStorageDto,
+  SaveImageStorageDto,
+} from "../../domain";
 import { CloudinaryImageDatasource } from "../datasources/cloudinary-images.datasource";
 
-export class CloudinaryImageRepositoryImpl implements ImageRepository {
+export class CloudinaryImageRepositoryImpl implements ImageStorageRepository {
   constructor(private readonly imageDatasource: CloudinaryImageDatasource) {}
   getImages(): Promise<Image[]> {
     throw new Error("Method not implemented.");

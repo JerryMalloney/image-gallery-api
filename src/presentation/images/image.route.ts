@@ -1,7 +1,11 @@
 import { Router } from "express";
 import multer from "multer";
-import { CloudinaryImageDatasource } from "../../infrastructure/datasources/cloudinary-images.datasource";
-import { CloudinaryImageRepositoryImpl } from "../../infrastructure/repositories/cloudinary-images.repository";
+import {
+  CloudinaryImageDatasource,
+  CloudinaryImageRepositoryImpl,
+  PostgresImageDatasource,
+  PostgresImageRepository,
+} from "../../infrastructure";
 import { FileUploadMiddleware } from "../middlewares/fileUploadFilter.middleware";
 import { ImageController } from "./image.controller";
 import { ImageService } from "./image.service";
@@ -13,11 +17,19 @@ const upload = multer({
     fileSize: 5242880,
   },
 });
+
 const cloudinaryImageDatasource = new CloudinaryImageDatasource();
 const cloudinaryImageRepository = new CloudinaryImageRepositoryImpl(
   cloudinaryImageDatasource
 );
-const imageService = new ImageService(cloudinaryImageRepository);
+
+const postgresImageRepository = new PostgresImageRepository(
+  new PostgresImageDatasource()
+);
+const imageService = new ImageService(
+  cloudinaryImageRepository,
+  postgresImageRepository
+);
 
 export class ImageRoute {
   static get routes(): Router {

@@ -28,3 +28,14 @@ model User {
   role Roles @default(user)
   disabled Boolean @default(false)
 }
+
+model Image {
+  id Int @id @default(autoincrement())
+  externalId String @unique
+  name String
+  alt String
+  url String
+  format String
+  size Int
+  location String
+}
