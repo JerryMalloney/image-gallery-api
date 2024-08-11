@@ -9,7 +9,9 @@ export class FileUploadMiddleware {
     }
 
     const files = req.files as Express.Multer.File[];
-
+    if (!files[0]) {
+      return res.status(400).json({ error: "file missing" });
+    }
     const fileExtension = path.parse(files[0].originalname).ext;
 
     if (!this.filters.includes(fileExtension)) {
