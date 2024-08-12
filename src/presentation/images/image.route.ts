@@ -60,6 +60,42 @@ export class ImageRoute {
 /**
  * @swagger
  * /api/image/:
+ *   get:
+ *     summary: get all images
+ *     tags: [Image]
+ *     responses:
+ *       "200":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
+
+/**
+ * @swagger
+ * /api/image/{id}:
+ *   get:
+ *     summary: get image from id
+ *     tags: [Image]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        schema:
+ *          type: number
+ *     responses:
+ *       "200":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
+
+/**
+ * @swagger
+ * /api/image/:
  *   post:
  *     summary: Upload a image .jpg .jpeg .png
  *     tags: [Image]
