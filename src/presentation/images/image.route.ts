@@ -31,15 +31,20 @@ const imageService = new ImageService(
   postgresImageRepository
 );
 
+const imageController = new ImageController(imageService);
+
 export class ImageRoute {
   static get routes(): Router {
     const router = Router();
+
+    router.get("/", imageController.getImages);
+    router.get("/:id", imageController.getImage);
 
     router.post(
       "/",
       upload.array("image", 1),
       new FileUploadMiddleware([".jpg", ".jpeg", ".png"]).hasExtensions,
-      new ImageController(imageService).saveImage
+      imageController.saveImage
     );
 
     return router;

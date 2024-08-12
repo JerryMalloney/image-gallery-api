@@ -6,10 +6,10 @@ export class PostgresImageRepository implements ImageDbRepository {
     private readonly postgresImageDatasource: PostgresImageDatasource
   ) {}
   async getImages(): Promise<Image[]> {
-    throw new Error("Method not implemented.");
+    return this.postgresImageDatasource.getImages();
   }
-  async getImage(id: string): Promise<Image> {
-    throw new Error("Method not implemented.");
+  async getImage(id: number): Promise<Image> {
+    return this.postgresImageDatasource.getImage(id);
   }
   async saveImage(data: SaveImageDbDto): Promise<Image> {
     return this.postgresImageDatasource.saveImage(data);

@@ -11,6 +11,14 @@ export class ImageService {
     private imageDbRepo: ImageDbRepository
   ) {}
 
+  async getImages() {
+    return await this.imageDbRepo.getImages();
+  }
+
+  async getImage(id: number) {
+    return await this.imageDbRepo.getImage(id);
+  }
+
   async saveImage(data: SaveImageStorageDto) {
     const result = await this.imageStorageRepo.saveImage(data);
 
