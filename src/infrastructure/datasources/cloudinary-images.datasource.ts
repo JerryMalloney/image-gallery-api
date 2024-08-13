@@ -27,7 +27,10 @@ export class CloudinaryImageDatasource implements ImageStorageDatasource {
     const result = await new Promise((resolve, error) => {
       cloudinary.v2.uploader
         .upload_stream(
-          { filename_override: imagedto.name },
+          {
+            filename_override: imagedto.name,
+            use_filename: true,
+          },
           (error, uploadResult) => {
             if (error)
               throw CustomError.internalServer("file couldn't be uploaded");
