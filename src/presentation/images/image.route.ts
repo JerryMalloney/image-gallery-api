@@ -47,6 +47,8 @@ export class ImageRoute {
       imageController.saveImage
     );
 
+    router.delete("/:id", imageController.deleteImage);
+
     return router;
   }
 }

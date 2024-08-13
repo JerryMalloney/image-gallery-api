@@ -28,4 +28,11 @@ export class PostgresImageDatasource implements ImageDbDatasource {
 
     return Image.fromObject(result);
   }
+  async deleteImage(id: number): Promise<Image> {
+    const result = await prisma.image.delete({
+      where: { id: id },
+    });
+
+    return Image.fromObject(result);
+  }
 }

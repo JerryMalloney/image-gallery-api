@@ -5,6 +5,7 @@ export class PostgresImageRepository implements ImageDbRepository {
   constructor(
     private readonly postgresImageDatasource: PostgresImageDatasource
   ) {}
+
   async getImages(): Promise<Image[]> {
     return this.postgresImageDatasource.getImages();
   }
@@ -13,5 +14,9 @@ export class PostgresImageRepository implements ImageDbRepository {
   }
   async saveImage(data: SaveImageDbDto): Promise<Image> {
     return this.postgresImageDatasource.saveImage(data);
+  }
+
+  async deleteImage(id: number): Promise<Image> {
+    return this.postgresImageDatasource.deleteImage(id);
   }
 }

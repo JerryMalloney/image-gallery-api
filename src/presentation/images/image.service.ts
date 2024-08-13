@@ -1,4 +1,5 @@
 import {
+  CustomError,
   ImageDbRepository,
   ImageStorageRepository,
   SaveImageDbDto,
@@ -27,5 +28,22 @@ export class ImageService {
       alt: data.alt,
     });
     return await this.imageDbRepo.saveImage(savedImageDbDto!);
+  }
+
+  async deleteImage(id: number) {
+    const imageExists = await this.imageDbRepo.getImage(id);
+    if (!imageExists) {
+      throw CustomError.badRequest("image does not exists");
+    }
+
+    const resultFromStorage = await this.imageStorageRepo.deleteImage(
+      imageExists.externalId
+    );
+
+    if (!resultFromStorage) {
+      throw CustomError.internalServer("error deleting file from storage");
+    }
+
+    const resultFromDb = await this.imageDbRepo.deleteImage(imageExists.id);
   }
 }

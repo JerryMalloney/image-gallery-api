@@ -49,4 +49,15 @@ export class ImageController {
       .then((result) => res.status(200).json(result))
       .catch((error) => ErrorHandler.handle(error, res, this.errorSource));
   };
+
+  deleteImage = (req: Request, res: Response) => {
+    const { id } = req.params;
+    if (isNaN(+id)) {
+      return res.status(404).json({ error: "invalid Id" });
+    }
+    this.imageService
+      .deleteImage(+id)
+      .then((result) => res.status(200).json("File Deleted"))
+      .catch((error) => ErrorHandler.handle(error, res, this.errorSource));
+  };
 }

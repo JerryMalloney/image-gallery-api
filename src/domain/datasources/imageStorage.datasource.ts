@@ -6,4 +6,5 @@ export abstract class ImageStorageDatasource {
   abstract getImages(): Promise<Image[]>;
   abstract getImage(id: string): Promise<Image>;
   abstract saveImage(data: SaveImageStorageDto): Promise<SavedImageStorageDto>;
+  abstract deleteImage(id: string): Promise<Boolean>;
 }

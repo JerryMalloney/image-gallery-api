@@ -8,6 +8,7 @@ import { CloudinaryImageDatasource } from "../datasources/cloudinary-images.data
 
 export class CloudinaryImageRepositoryImpl implements ImageStorageRepository {
   constructor(private readonly imageDatasource: CloudinaryImageDatasource) {}
+
   getImages(): Promise<Image[]> {
     throw new Error("Method not implemented.");
   }
@@ -18,5 +19,9 @@ export class CloudinaryImageRepositoryImpl implements ImageStorageRepository {
     data: SaveImageStorageDto
   ): Promise<SavedImageStorageDto> => {
     return await this.imageDatasource.saveImage(data);
+  };
+
+  deleteImage = async (id: string): Promise<Boolean> => {
+    return this.imageDatasource.deleteImage(id);
   };
 }

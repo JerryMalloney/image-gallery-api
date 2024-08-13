@@ -5,4 +5,5 @@ export abstract class ImageDbDatasource {
   abstract getImages(): Promise<Image[]>;
   abstract getImage(id: number): Promise<Image>;
   abstract saveImage(data: SaveImageDbDto): Promise<Image>;
+  abstract deleteImage(id: number): Promise<Image>;
 }

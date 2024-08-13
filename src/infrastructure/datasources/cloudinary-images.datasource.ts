@@ -50,4 +50,10 @@ export class CloudinaryImageDatasource implements ImageStorageDatasource {
 
     return dto!;
   }
+  async deleteImage(id: string): Promise<Boolean> {
+    const result = await cloudinary.v2.uploader.destroy(id, {
+      invalidate: true,
+    });
+    return result.result == "ok" ? true : false;
+  }
 }
