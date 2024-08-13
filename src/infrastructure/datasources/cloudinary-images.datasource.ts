@@ -40,7 +40,7 @@ export class CloudinaryImageDatasource implements ImageStorageDatasource {
     const [error, dto] = SavedImageStorageDto.create({
       externalId: data.public_id,
       name: data.original_filename,
-      url: data.url,
+      url: data.secure_url,
       format: data.format,
       size: data.bytes,
       location: data.folder,
