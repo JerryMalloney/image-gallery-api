@@ -118,3 +118,24 @@ export class ImageRoute {
  *             schema:
  *               type: object
  */
+
+/**
+ * @swagger
+ * /api/image/{id}:
+ *   delete:
+ *     summary: delete image from id
+ *     tags: [Image]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        schema:
+ *          type: number
+ *     responses:
+ *       "200":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
