@@ -49,6 +49,8 @@ export class ImageRoute {
 
     router.delete("/:id", imageController.deleteImage);
 
+    router.patch("/:id", upload.none(), imageController.updateImage);
+
     return router;
   }
 }

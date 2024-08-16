@@ -5,6 +5,7 @@ export * from "./dtos/image/save-image-db.dto";
 export * from "./dtos/image/save-image-storage-dto";
 export * from "./dtos/image/saved-image-db-dto";
 export * from "./dtos/image/saved-image-storage-dto";
+export * from "./dtos/image/update-image.dto";
 export * from "./dtos/user/update-user.dto";
 export * from "./entities/image.entity";
 export * from "./entities/user.entity";

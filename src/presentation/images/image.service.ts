@@ -5,6 +5,7 @@ import {
   SaveImageDbDto,
   SaveImageStorageDto,
 } from "../../domain";
+import { UpdateImageDto } from "../../domain/dtos/image/update-image.dto";
 
 export class ImageService {
   constructor(
@@ -45,5 +46,12 @@ export class ImageService {
     }
 
     const resultFromDb = await this.imageDbRepo.deleteImage(imageExists.id);
+  }
+
+  async updateImage(data: UpdateImageDto) {
+    const imageExists = await this.imageDbRepo.getImage(data.id);
+    if (!imageExists) throw CustomError.badRequest("image doest not exits");
+
+    return await this.imageDbRepo.updateImage(data);
   }
 }

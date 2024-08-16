@@ -2,7 +2,7 @@ import cloudinary from "cloudinary";
 import { Request, Response } from "express";
 import path from "path";
 import { envs } from "../../config/envs";
-import { SaveImageStorageDto } from "../../domain/dtos/image/save-image-storage-dto";
+import { SaveImageStorageDto, UpdateImageDto } from "../../domain";
 import { ErrorHandler } from "../shared/errorHandler";
 import { ImageService } from "./image.service";
 
@@ -58,6 +58,24 @@ export class ImageController {
     this.imageService
       .deleteImage(+id)
       .then((result) => res.status(200).json("File Deleted"))
+      .catch((error) => ErrorHandler.handle(error, res, this.errorSource));
+  };
+
+  updateImage = (req: Request, res: Response) => {
+    const id = +req.params.id;
+
+    if (!id) {
+      return res.status(404).json({ error: "no id provided" });
+    }
+    const [error, updateImageDto] = UpdateImageDto.create({ ...req.body, id });
+
+    if (error) {
+      return res.status(404).json({ error });
+    }
+
+    this.imageService
+      .updateImage(updateImageDto!)
+      .then((result) => res.json(result))
       .catch((error) => ErrorHandler.handle(error, res, this.errorSource));
   };
 }

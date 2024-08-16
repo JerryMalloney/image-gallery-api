@@ -1,4 +1,5 @@
 import { Image, ImageDbRepository, SaveImageDbDto } from "../../domain";
+import { UpdateImageDto } from "../../domain/dtos/image/update-image.dto";
 import { PostgresImageDatasource } from "../datasources/postgres-image.datasource";
 
 export class PostgresImageRepository implements ImageDbRepository {
@@ -18,5 +19,8 @@ export class PostgresImageRepository implements ImageDbRepository {
 
   async deleteImage(id: number): Promise<Image> {
     return this.postgresImageDatasource.deleteImage(id);
+  }
+  async updateImage(data: UpdateImageDto): Promise<Image> {
+    return this.postgresImageDatasource.updateImage(data);
   }
 }
