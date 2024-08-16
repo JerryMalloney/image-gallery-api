@@ -49,7 +49,7 @@ export class ImageRoute {
 
     router.delete("/:id", imageController.deleteImage);
 
-    router.patch("/:id", upload.none(), imageController.updateImage);
+    router.patch("/:id", imageController.updateImage);
 
     return router;
   }
@@ -133,6 +133,30 @@ export class ImageRoute {
  *        required: true
  *        schema:
  *          type: number
+ *     responses:
+ *       "200":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
+
+/**
+ * @swagger
+ * /api/image/{id}:
+ *   patch:
+ *     summary: update image alt
+ *     tags: [Image]
+ *     requestBody:
+ *      content:
+ *        multipart/form-data:
+ *         schema:
+ *          type: object
+ *          properties:
+ *           image:
+ *             type: string
+ *             format: binary
  *     responses:
  *       "200":
  *         description: Created
