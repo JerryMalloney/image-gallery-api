@@ -78,27 +78,6 @@ export class ImageRoute {
 
 /**
  * @swagger
- * /api/image/{id}:
- *   get:
- *     summary: get image from id
- *     tags: [Image]
- *     parameters:
- *      - in: path
- *        name: id
- *        required: true
- *        schema:
- *          type: number
- *     responses:
- *       "200":
- *         description: Created
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- */
-
-/**
- * @swagger
  * /api/image/:
  *   post:
  *     summary: Upload a image .jpg .jpeg .png
@@ -124,8 +103,8 @@ export class ImageRoute {
 /**
  * @swagger
  * /api/image/{id}:
- *   delete:
- *     summary: delete image from id
+ *   get:
+ *     summary: get image from id
  *     tags: [Image]
  *     parameters:
  *      - in: path
@@ -146,17 +125,49 @@ export class ImageRoute {
  * @swagger
  * /api/image/{id}:
  *   patch:
- *     summary: update image alt
+ *     summary: Update image alt
  *     tags: [Image]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        schema:
+ *          type: number
  *     requestBody:
- *      content:
- *        multipart/form-data:
- *         schema:
- *          type: object
- *          properties:
- *           image:
- *             type: string
- *             format: binary
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - alt
+ *             properties:
+ *               alt:
+ *                 type: string
+ *                 description: must be unique
+ *             example:
+ *               alt: alt
+ *     responses:
+ *       "200":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
+
+/**
+ * @swagger
+ * /api/image/{id}:
+ *   delete:
+ *     summary: delete image from id
+ *     tags: [Image]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        schema:
+ *          type: number
  *     responses:
  *       "200":
  *         description: Created
